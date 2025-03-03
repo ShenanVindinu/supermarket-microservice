@@ -5,20 +5,24 @@ spring:
     loadbalancer:
       rule: random
     gateway:
-        routes:
-          - id: product-service
-            uri: lb://PRODUCT-SERVICE
-#            uri: http://localhost:8081
-            predicates:
-              - Path=/product-service/**
-          - id: order-service
-            uri: lb://order-service
-            predicates:
-              - Path=/order-service/**
-          - id: inventory-service
-            uri: http://localhost:3000
-            predicates:
-              - Path=/inventory-service/**
+      routes:
+        - id: product-service
+          uri: lb://PRODUCT-SERVICE
+          # uri: http://localhost:8081
+          predicates:
+            - Path=/product-service/**
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order-service/**
+        - id: inventory-service
+          uri: http://localhost:3000
+          predicates:
+            - Path=/inventory-service/**
+        - id: customer-service
+          uri: http://localhost:5000
+          predicates:
+            - Path=/customer-service/**
 
 
 
